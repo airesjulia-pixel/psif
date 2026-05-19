@@ -1,27 +1,40 @@
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import React from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 import { router } from "expo-router";
 
 export default function RecuperarSenha() {
   return (
     <View style={styles.container}>
-      <View style={styles.card}>
-        <Text style={styles.title}>Recuperar Senha</Text>
-        <Text style={styles.subtitle}>
-          Informe seu email institucional
-        </Text>
+      <Text style={styles.backArrow}>←</Text>
 
-        <TextInput
-          placeholder="Digite seu email"
-          style={styles.input}
-        />
+      <Text style={styles.title}>Recuperar senha</Text>
 
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Enviar</Text>
-        </TouchableOpacity>
+      <Text style={styles.subtitle}>
+        Informe o seu E-mail para receber instruções de recuperação
+      </Text>
 
-        <TouchableOpacity onPress={() => router.back()}>
-          <Text style={styles.back}>Voltar ao login</Text>
-        </TouchableOpacity>
+      <TextInput
+        placeholder="Seu E-mail"
+        placeholderTextColor="#999"
+        style={styles.input}
+      />
+
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Enviar instruções</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => router.back()}>
+        <Text style={styles.backLogin}>Voltar para o login</Text>
+      </TouchableOpacity>
+
+      <View style={styles.iconArea}>
+        <Text style={styles.icon}>✉️ 🔒</Text>
       </View>
     </View>
   );
@@ -30,43 +43,43 @@ export default function RecuperarSenha() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#2f5d43",
-    justifyContent: "center",
-    padding: 20,
+    backgroundColor: "#ffffff",
+    padding: 25,
   },
 
-  card: {
-    backgroundColor: "#fff",
-    borderRadius: 20,
-    padding: 25,
+  backArrow: {
+    fontSize: 28,
+    marginTop: 20,
+    color: "#333",
   },
 
   title: {
     fontSize: 28,
     fontWeight: "bold",
-    color: "#2f5d43",
     textAlign: "center",
-    marginBottom: 10,
+    marginTop: 20,
+    color: "#111",
   },
 
   subtitle: {
+    fontSize: 13,
+    color: "#777",
     textAlign: "center",
-    color: "#666",
-    marginBottom: 25,
+    marginVertical: 25,
   },
 
   input: {
     borderWidth: 1,
-    borderColor: "#ddd",
-    borderRadius: 12,
+    borderColor: "#ccc",
+    borderRadius: 8,
     padding: 14,
     marginBottom: 20,
   },
 
   button: {
-    backgroundColor: "#2f5d43",
-    padding: 15,
-    borderRadius: 12,
+    backgroundColor: "#d84b4b",
+    padding: 14,
+    borderRadius: 8,
   },
 
   buttonText: {
@@ -75,9 +88,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  back: {
+  backLogin: {
     textAlign: "center",
-    marginTop: 20,
-    color: "#2f5d43",
+    color: "#1f5d3d",
+    marginTop: 18,
+    fontWeight: "500",
+  },
+
+  iconArea: {
+    marginTop: 120,
+    alignItems: "center",
+  },
+
+  icon: {
+    fontSize: 70,
   },
 });

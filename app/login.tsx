@@ -1,35 +1,48 @@
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+} from "react-native";
 import { router } from "expo-router";
 
 export default function Login() {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
+        <Image
+          source={require("../assets/images/logo.png")}
+          style={styles.logoImage}
+        />
+
         <Text style={styles.logo}>PSIF</Text>
+
         <Text style={styles.subtitle}>
           Plataforma de Suporte Psicopedagógico
         </Text>
 
-        <Text style={styles.label}>Email Institucional</Text>
         <TextInput
-          placeholder="Digite seu email"
+          placeholder="Seu E-mail"
           placeholderTextColor="#999"
           style={styles.input}
         />
 
-        <Text style={styles.label}>Senha</Text>
         <TextInput
-          placeholder="Digite sua senha"
+          placeholder="********"
           placeholderTextColor="#999"
           secureTextEntry
           style={styles.input}
         />
 
-        <TouchableOpacity
-          onPress={() => router.push("/recuperar-senha")}
-        >
-          <Text style={styles.forgotPassword}>Esqueci minha senha</Text>
-        </TouchableOpacity>
+        <View style={styles.optionsRow}>
+          <Text style={styles.remember}>☐ Lembrar-me</Text>
+
+          <TouchableOpacity onPress={() => router.push("/recuperar-senha")}>
+            <Text style={styles.forgot}>Esqueceu a senha?</Text>
+          </TouchableOpacity>
+        </View>
 
         <TouchableOpacity
           style={styles.button}
@@ -37,6 +50,15 @@ export default function Login() {
         >
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
+
+        <Text style={styles.footerText}>
+          Acesso exclusivo para psicopedagogos e professores do IFPB
+        </Text>
+
+        <View style={styles.registerRow}>
+          <Text style={styles.registerText}>Não tem uma conta?</Text>
+          <Text style={styles.registerLink}> Cadastre-se aqui</Text>
+        </View>
       </View>
     </View>
   );
@@ -45,69 +67,105 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#2f5d43",
+    backgroundColor: "#efefef",
     justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
 
   card: {
+    width: "100%",
+    maxWidth: 320,
     backgroundColor: "#fff",
-    borderRadius: 20,
+    borderRadius: 12,
     padding: 25,
     shadowColor: "#000",
     shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 5,
+    shadowRadius: 10,
+    elevation: 4,
+  },
+
+  logoImage: {
+    width: 70,
+    height: 70,
+    alignSelf: "center",
+    marginBottom: 12,
+    resizeMode: "contain",
   },
 
   logo: {
-    fontSize: 34,
+    fontSize: 28,
     fontWeight: "bold",
-    color: "#2f5d43",
     textAlign: "center",
-    marginBottom: 8,
+    color: "#222",
   },
 
   subtitle: {
-    fontSize: 14,
     textAlign: "center",
-    color: "#666",
-    marginBottom: 30,
-  },
-
-  label: {
-    fontSize: 14,
-    marginBottom: 8,
-    color: "#333",
-    fontWeight: "600",
+    fontSize: 12,
+    color: "#777",
+    marginBottom: 25,
   },
 
   input: {
     borderWidth: 1,
-    borderColor: "#ddd",
-    borderRadius: 12,
-    padding: 14,
-    marginBottom: 16,
-    backgroundColor: "#fafafa",
+    borderColor: "#ccc",
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 14,
+    backgroundColor: "#fff",
   },
 
-  forgotPassword: {
-    textAlign: "right",
-    color: "#2f5d43",
-    marginBottom: 20,
-    fontSize: 13,
+  optionsRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 18,
+  },
+
+  remember: {
+    fontSize: 12,
+    color: "#777",
+  },
+
+  forgot: {
+    fontSize: 12,
+    color: "#1f5d3d",
+    fontWeight: "600",
   },
 
   button: {
-    backgroundColor: "#2f5d43",
-    padding: 16,
-    borderRadius: 12,
+    backgroundColor: "#d84b4b",
+    padding: 14,
+    borderRadius: 8,
+    marginBottom: 18,
   },
 
   buttonText: {
     color: "#fff",
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: 16,
+  },
+
+  footerText: {
+    textAlign: "center",
+    fontSize: 10,
+    color: "#999",
+    marginBottom: 15,
+  },
+
+  registerRow: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+
+  registerText: {
+    fontSize: 11,
+    color: "#777",
+  },
+
+  registerLink: {
+    fontSize: 11,
+    color: "#1f5d3d",
+    fontWeight: "bold",
   },
 });

@@ -1,17 +1,17 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export default function Documentos() {
+export default function Notificacoes() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Documentos</Text>
+      <Text style={styles.title}>Notificações</Text>
 
       <View style={styles.card}>
-        <Text>📄 Laudo João Silva.pdf</Text>
+        <Text>🔔 Relatório pendente de João Silva</Text>
       </View>
 
       <View style={styles.card}>
-        <Text>📄 Parecer Maria Souza.pdf</Text>
+        <Text>🔔 Atendimento agendado para 14h</Text>
       </View>
     </View>
   );
