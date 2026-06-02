@@ -1,17 +1,19 @@
+import { router } from "expo-router";
 import {
-  View,
+  Image,
+  ScrollView,
+  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
-  Image,
+  View,
 } from "react-native";
-import { router } from "expo-router";
 
 export default function Login() {
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.card}>
+
         <Image
           source={require("../assets/images/logo.png")}
           style={styles.logoImage}
@@ -39,34 +41,40 @@ export default function Login() {
         <View style={styles.optionsRow}>
           <Text style={styles.remember}>☐ Lembrar-me</Text>
 
-          <TouchableOpacity onPress={() => router.push("/recuperar-senha")}>
-            <Text style={styles.forgot}>Esqueceu a senha?</Text>
+          <TouchableOpacity
+            onPress={() => router.push("/recuperarSenha")}
+          >
+            <Text style={styles.forgot}>
+              Esqueceu a senha?
+            </Text>
           </TouchableOpacity>
         </View>
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => router.push("/dashboard")}
+          onPress={() => router.push("/(mobile)/dashboard")}
         >
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
 
-        <Text style={styles.footerText}>
+        <Text style={styles.footer}>
           Acesso exclusivo para psicopedagogos e professores do IFPB
         </Text>
 
-        <View style={styles.registerRow}>
-          <Text style={styles.registerText}>Não tem uma conta?</Text>
-          <Text style={styles.registerLink}> Cadastre-se aqui</Text>
-        </View>
+        <TouchableOpacity>
+          <Text style={styles.register}>
+            Não possui conta? Cadastre-se
+          </Text>
+        </TouchableOpacity>
+
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: "#efefef",
     justifyContent: "center",
     alignItems: "center",
@@ -75,68 +83,69 @@ const styles = StyleSheet.create({
 
   card: {
     width: "100%",
-    maxWidth: 320,
+    maxWidth: 350,
     backgroundColor: "#fff",
-    borderRadius: 12,
+    borderRadius: 20,
     padding: 25,
     shadowColor: "#000",
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.08,
     shadowRadius: 10,
-    elevation: 4,
+    elevation: 5,
   },
 
   logoImage: {
-    width: 70,
-    height: 70,
+    width: 90,
+    height: 90,
     alignSelf: "center",
     marginBottom: 12,
     resizeMode: "contain",
   },
 
   logo: {
-    fontSize: 28,
+    fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
     color: "#222",
+    marginBottom: 5,
   },
 
   subtitle: {
     textAlign: "center",
-    fontSize: 12,
     color: "#777",
-    marginBottom: 25,
+    fontSize: 13,
+    marginBottom: 30,
   },
 
   input: {
     borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 8,
-    padding: 12,
-    marginBottom: 14,
-    backgroundColor: "#fff",
+    borderColor: "#ddd",
+    borderRadius: 12,
+    padding: 14,
+    marginBottom: 15,
+    backgroundColor: "#fafafa",
   },
 
   optionsRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 18,
+    marginBottom: 22,
   },
 
   remember: {
-    fontSize: 12,
     color: "#777",
+    fontSize: 12,
   },
 
   forgot: {
-    fontSize: 12,
     color: "#1f5d3d",
-    fontWeight: "600",
+    fontWeight: "bold",
+    fontSize: 12,
   },
 
   button: {
     backgroundColor: "#d84b4b",
-    padding: 14,
-    borderRadius: 8,
+    padding: 15,
+    borderRadius: 12,
     marginBottom: 18,
   },
 
@@ -144,28 +153,20 @@ const styles = StyleSheet.create({
     color: "#fff",
     textAlign: "center",
     fontWeight: "bold",
+    fontSize: 16,
   },
 
-  footerText: {
+  footer: {
     textAlign: "center",
-    fontSize: 10,
+    fontSize: 11,
     color: "#999",
     marginBottom: 15,
   },
 
-  registerRow: {
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-
-  registerText: {
-    fontSize: 11,
-    color: "#777",
-  },
-
-  registerLink: {
-    fontSize: 11,
+  register: {
+    textAlign: "center",
     color: "#1f5d3d",
     fontWeight: "bold",
+    fontSize: 13,
   },
 });

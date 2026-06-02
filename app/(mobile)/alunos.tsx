@@ -1,29 +1,41 @@
+
+
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export default function Documentos() {
+export default function Alunos() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Documentos</Text>
+      <Text style={styles.title}>Meus Alunos</Text>
 
       <View style={styles.card}>
-        <Text>📄 Laudo João Silva.pdf</Text>
+        <Text>João Silva</Text>
       </View>
 
       <View style={styles.card}>
-        <Text>📄 Parecer Maria Souza.pdf</Text>
+        <Text>Maria Souza</Text>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff", padding: 20 },
-  title: { fontSize: 28, fontWeight: "bold", marginBottom: 20 },
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: "#fff",
+  },
+
+  title: {
+    fontSize: 28,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+
   card: {
     backgroundColor: "#f5f5f5",
     padding: 18,
-    borderRadius: 12,
+    borderRadius: 10,
     marginBottom: 15,
   },
 });
